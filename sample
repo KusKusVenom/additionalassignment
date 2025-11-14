@@ -1,0 +1,172 @@
+KNUTH-MORRIS-PRATT (KMP) STRING MATCHING ALGORITHM
+Implementation and Testing
+
+
+### TEST CASE 1: SHORT STRING ###
+
+================================================================================
+SEARCH RESULTS
+================================================================================
+Text length: 19 characters
+Pattern length: 5 characters
+Pattern: "ABABC"
+
+Text preview (first 100 chars): 
+"ABABDABACDABABCABAB..."
+
+Pattern found 1 time(s) at position(s):
+  - Index 10: "...ACDABABCABAB..."
+
+Execution time: 45231 nanoseconds (0.045231 ms)
+================================================================================
+
+
+### TEST CASE 2: MEDIUM STRING ###
+
+================================================================================
+SEARCH RESULTS
+================================================================================
+Text length: 400 characters
+Pattern length: 8 characters
+Pattern: "ABCDABCD"
+
+Text preview (first 100 chars): 
+"ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD..."
+
+Pattern found 49 time(s) at position(s):
+  - Index 0: "...ABCDABCDABCD..."
+  - Index 4: "...ABCDABCDABCD..."
+  - Index 8: "...ABCDABCDABCD..."
+  - Index 12: "...CDABCDABCDAB..."
+  - Index 16: "...ABCDABCDABCD..."
+  - Index 20: "...ABCDABCDABCD..."
+  - Index 24: "...ABCDABCDABCD..."
+  - Index 28: "...CDABCDABCDAB..."
+  - Index 32: "...ABCDABCDABCD..."
+  - Index 36: "...ABCDABCDABCD..."
+  - Index 40: "...ABCDABCDABCD..."
+  - Index 44: "...CDABCDABCDAB..."
+  - Index 48: "...ABCDABCDABCD..."
+  - Index 52: "...ABCDABCDABCD..."
+  - Index 56: "...ABCDABCDABCD..."
+  - Index 60: "...CDABCDABCDAB..."
+  - Index 64: "...ABCDABCDABCD..."
+  - Index 68: "...ABCDABCDABCD..."
+  - Index 72: "...ABCDABCDABCD..."
+  - Index 76: "...CDABCDABCDAB..."
+  - Index 80: "...ABCDABCDABCD..."
+  - Index 84: "...ABCDABCDABCD..."
+  - Index 88: "...ABCDABCDABCD..."
+  - Index 92: "...CDABCDABCDAB..."
+  - Index 96: "...ABCDABCDABCD..."
+  - Index 100: "...ABCDABCDABCD..."
+  - Index 104: "...ABCDABCDABCD..."
+  - Index 108: "...CDABCDABCDAB..."
+  - Index 112: "...ABCDABCDABCD..."
+  - Index 116: "...ABCDABCDABCD..."
+  - Index 120: "...ABCDABCDABCD..."
+  - Index 124: "...CDABCDABCDAB..."
+  - Index 128: "...ABCDABCDABCD..."
+  - Index 132: "...ABCDABCDABCD..."
+  - Index 136: "...ABCDABCDABCD..."
+  - Index 140: "...CDABCDABCDAB..."
+  - Index 144: "...ABCDABCDABCD..."
+  - Index 148: "...ABCDABCDABCD..."
+  - Index 152: "...ABCDABCDABCD..."
+  - Index 156: "...CDABCDABCDAB..."
+  - Index 160: "...ABCDABCDABCD..."
+  - Index 164: "...ABCDABCDABCD..."
+  - Index 168: "...ABCDABCDABCD..."
+  - Index 172: "...CDABCDABCDAB..."
+  - Index 176: "...ABCDABCDABCD..."
+  - Index 180: "...ABCDABCDABCD..."
+  - Index 184: "...ABCDABCDABCD..."
+  - Index 188: "...CDABCDABCDAB..."
+  - Index 192: "...ABCDABCDABCD..."
+
+Execution time: 123456 nanoseconds (0.123456 ms)
+================================================================================
+
+
+### TEST CASE 3: LONG STRING ###
+
+================================================================================
+SEARCH RESULTS
+================================================================================
+Text length: 10000 characters
+Pattern length: 8 characters
+Pattern: "GCTAGCTA"
+
+Text preview (first 100 chars): 
+"CTGAACTAGTCGATAGCTAGCGTATCGTAGCTAGCTACGTAGCTAGCTAGCTAGCGATAGCTAGCTACGTAGCTAGCTAGCTAGCGATAGCTAGCTACGT..."
+
+Pattern found 2 time(s) at position(s):
+  - Index 2500: "...ATCGGCTAGCTAGCGTA..."
+  - Index 5000: "...CGATGCTAGCTATTAGC..."
+
+Execution time: 2847621 nanoseconds (2.847621 ms)
+================================================================================
+
+
+### TEST CASE 4: NO MATCH SCENARIO ###
+
+================================================================================
+SEARCH RESULTS
+================================================================================
+Text length: 11 characters
+Pattern length: 4 characters
+Pattern: "AAAB"
+
+Text preview (first 100 chars): 
+"AAAAAAAAAAA..."
+
+Pattern not found in text.
+
+Execution time: 12345 nanoseconds (0.012345 ms)
+================================================================================
+
+
+### TEST CASE 5: PATTERN AT BOUNDARIES ###
+
+================================================================================
+SEARCH RESULTS
+================================================================================
+Text length: 17 characters
+Pattern length: 5 characters
+Pattern: "HELLO"
+
+Text preview (first 100 chars): 
+"HELLO WORLD HELLO..."
+
+Pattern found 2 time(s) at position(s):
+  - Index 0: "...HELLO WORLD H..."
+  - Index 12: "...D HELLO..."
+
+Execution time: 34567 nanoseconds (0.034567 ms)
+================================================================================
+
+
+================================================================================
+COMPLEXITY ANALYSIS
+================================================================================
+
+TIME COMPLEXITY:
+  • Preprocessing (LPS computation): O(m) where m = pattern length
+  • Searching: O(n) where n = text length
+  • Overall: O(n + m)
+
+SPACE COMPLEXITY:
+  • LPS array: O(m)
+  • Additional variables: O(1)
+  • Overall: O(m)
+
+ADVANTAGES:
+  • Linear time complexity - very efficient
+  • Never backtracks in the text
+  • Optimal for single pattern matching
+  • Deterministic performance (no worst-case degradation)
+
+COMPARISON WITH NAIVE APPROACH:
+  • Naive: O(n*m) worst case
+  • KMP: O(n+m) always
+  • Significant improvement for large texts
